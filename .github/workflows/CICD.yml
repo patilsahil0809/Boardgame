@@ -66,9 +66,18 @@ jobs:
       uses: tale/kubectl-action@v1
       with:
         base64-kube-config: ${{ secrets.KUBE_CONFIG }}
-    - run:  |
-          kubectl apply -f deployment-service.yml -n webapps
-          kubectl get svc -n webapps 
+
+    - name: Print working directory
+      run: pwd
+
+    - name: List files in the working directory
+      run: ls -la
+
+    - name: Apply Kubernetes configuration
+      run: |
+        kubectl apply -f deployment-service.yml -n webapps
+        kubectl get svc -n webapps
+
 
 
         
