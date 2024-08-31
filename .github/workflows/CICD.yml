@@ -11,6 +11,15 @@ jobs:
 
  
     steps:
+
+    - name: Clean up the workspace directory
+      run: |
+        sudo rm -rf /home/ubuntu/actions-runner/_work/Boardgame/Boardgame
+    
+    - name: Adjust file permissions
+      run: |
+        sudo chmod -R 777 /home/ubuntu/actions-runner/_work/Boardgame/Boardgame
+
     - uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v4
